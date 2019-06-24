@@ -1,0 +1,38 @@
+# this code was made for the Zero Trust Network team of Booz Allen's 2019 Summer Games Program
+
+import subprocess  # imports bash utility
+
+print("Welcome to our Summer Games project. Please follow these steps to establish your photo for facial recognition.")
+
+
+def start():
+    employeeID = input("Please enter your employee ID: ")
+    employeeIDcheck = input("Please re-enter your employee ID: ")
+
+    if employeeID == employeeIDcheck:
+
+        print("You will now take 5 pictures.")
+        count = 4
+
+        for i in count:
+
+            print("Taking photo #" + (i + 1))  # i + 1 so it appears not to start at zero
+
+            filename = employeeID.str() + "photo" + (i + 1).str()
+            # example: my ID is 1234... output: 1234photo1, 1234photo2 etc
+
+            subprocess.call(["raspistill", "-o", filename])  # runs bash to take photo
+
+            # store photos in correct file
+
+        print("All photos are now stored properly and you are ready for facial recognition. Have a nice day!")
+        # if the ID does not mismatch the code exits here
+
+    else:
+        userInput = input("ID mismatch. Press 'q' to exit this process or any other key to retry: ")
+
+        if userInput.lower() != 'q':
+            start()  # goes back to initial employee ID input statements with any key not 'Q' or 'q'
+
+        else:
+            print("Have a nice day!")  # exits the code without photos taken/stored
