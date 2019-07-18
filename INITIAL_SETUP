@@ -1,0 +1,30 @@
+Here is a rough step-by-step outline to set up AWX and Ansible using Docker. 
+This was setup in a Ubuntu virtual machine environment.
+
+STEP ONE: VIRTUAL MACHINE: 
+-Linux 5.0.0-13-generic Ubuntu-19.04-desktop-amd64.iso
+  -http://releases.ubuntu.com/19.04/
+-Settings
+  -3 CPU cores 
+  -8 GB ram 
+  -30 GB HDD 
+  
+STEP TWO: IN TERMINAL:
+1. sudo apt-get update -y
+2. sudo apt-get dist-upgrade -y
+3. sudo apt-get install ansible -y
+4. sudo apt-get install git -y
+5. sudo git clone https://github.com/ansible/awx.git 
+6. sudo apt-get install docker
+7. sudo apt-get install docker-compose
+8. cd awx/installer
+9. sudo vim inventory
+10. change top line to: localhost ansible_connection=local ansible_python_interpreter="/usr/bin/env python3.7"
+11. 'esc' and then ':wq' to save and quit
+12. sudo apt-get update -y
+13. sudo apt-get dist-upgrade -y
+14. sudo ansible-playbook -i inventory install.yml
+
+STEP THREE: IN BROWSER:
+1. visit http://localhost
+2. USER: admin PW: password
