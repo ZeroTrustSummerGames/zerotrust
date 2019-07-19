@@ -1,0 +1,48 @@
+# this code was made for the Zero Trust Network team of Booz Allen's 2019 Summer Games Program
+
+import subprocess  # imports bash utility
+import os.path  # for file searching
+import time
+from os import path
+
+print("Welcome to our Summer Games project. Please follow these steps to establish your photo for facial recognition.")
+
+def start():
+
+    employeeID = input("Please enter your employee ID: ")
+    employeeIDcheck = input("Please re-enter your employee ID: ")
+
+    if employeeID == employeeIDcheck:
+    
+        print("You will now take 5 pictures.")
+        i = 1
+        count = 6
+
+        for i in count:
+
+            print("Taking photo #"); print(int(i))
+            jpgname = str(employeeID) + "photo" + str(i) + ".jpg"
+            filepath = "/home/pi/Pictures/" + jpgname
+            
+            print("3")
+            time.sleep(1)
+            print("2")
+            time.sleep(1)
+            print("1")
+            time.sleep(1)
+            
+            subprocess.call(["fswebcam", str(filepath)])
+
+        print("All photos are now stored properly and you are ready for facial recognition. Have a nice day!")
+    
+    else:
+
+        userInput = input("ID mismatch. Press 'q' to exit this process or any other key to retry: ")
+
+        if str(userInput) != ('q' | 'Q'):
+
+            start()  # goes back to initial employee ID input statements with any key not 'Q' or 'q'
+
+        else:
+
+            print("Have a nice day!")  # exits the code without photos taken/stored
