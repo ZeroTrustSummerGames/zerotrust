@@ -12,18 +12,19 @@ STEP ONE: VIRTUAL MACHINE:
 STEP TWO: IN TERMINAL:
 1. sudo apt-get update -y
 2. sudo apt-get dist-upgrade -y
-3. sudo apt-get install ansible -y
-4. sudo apt-get install git -y
-5. sudo git clone https://github.com/ansible/awx.git 
-6. sudo apt-get install docker
-7. sudo apt-get install docker-compose
-8. cd awx/installer
-9. sudo vim inventory
-10. change top line to: localhost ansible_connection=local ansible_python_interpreter="/usr/bin/env python3.7"
-11. 'esc' and then ':wq' to save and quit
-12. sudo apt-get update -y
-13. sudo apt-get dist-upgrade -y
-14. sudo ansible-playbook -i inventory install.yml
+3. cd /var/lib
+4. sudo apt-get install ansible -y
+5. sudo apt-get install git -y
+6. sudo git clone https://github.com/ansible/awx.git 
+7. sudo apt-get install docker -y
+8. sudo apt-get install docker-compose -y
+9. cd /var/lib/awx/installer
+10. sudo vim inventory
+11. change top line to: localhost ansible_connection=local ansible_python_interpreter="/usr/bin/env python3.7"
+12. 'esc' and then ':wq' to save and quit
+13. sudo apt-get update -y
+14. sudo apt-get dist-upgrade -y
+15. sudo ansible-playbook -i inventory install.yml
 
 STEP THREE: IN BROWSER:
 1. visit http://localhost
