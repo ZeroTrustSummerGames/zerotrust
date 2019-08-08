@@ -20,7 +20,7 @@ STEP TWO: IN TERMINAL:
 8. sudo apt-get install docker-compose -y
 9. cd /var/lib/awx/installer
 10. sudo vim inventory
-11. change top line to: localhost ansible_connection=local ansible_python_interpreter="/usr/bin/env python3.7"
+11. change top line to: localhost ansible_connection=local ansible_python_interpreter="/usr/bin/env python3.7" and host_port to 8080.
 12. 'esc' and then ':wq' to save and quit
 13. sudo apt-get update -y
 14. sudo apt-get dist-upgrade -y
